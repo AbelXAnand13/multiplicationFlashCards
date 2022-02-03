@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
     vector<vector<int>> nums;
-
+    srand(time(0));
     for (int i = 1; i <= 12; i++) {
         vector<int> temp;
         for (int j = 1; j <= 12; j++) {
@@ -15,12 +15,28 @@ int main() {
         }
         nums.push_back(temp);
     }
-    
-    for (int i = 0; i < nums.size(); i++) {
-        for (int j = 0; j < nums[i].size(); j++)
-        {
-            cout << nums[i][j] << " ";
+    bool quit = false;
+    int correct = 0;
+    int wrong = 0;
+    cout << "Just enter 0 when you done\n";
+    while (!quit) {
+        int randRow = rand() % 12;
+        //num 1
+        int randCol = rand() % 12;
+        //num 2
+        int ans;
+        cout << nums[0][randCol] << " x " << nums[randRow][0] << endl;
+        cin >> ans;
+        if (ans == (nums[0][randCol] * nums[randRow][0])) {
+            correct++;
         }
-        cout << endl;
+        else if (ans == 0) {
+            quit = true;
+            cout << "Correct = " << correct << "\nWrong = " << wrong << endl;
+        }
+        else {
+            wrong++;
+        }
     }
+    
 }
