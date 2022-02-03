@@ -7,12 +7,13 @@ using namespace std;
 
 int main() {
     vector<vector<int>> nums;
-    
+
     for (int i = 1; i <= 12; i++) {
-        nums[i-1].push_back(i);
-        for (int j = 0; j < 12; j++) {
-            nums[j].push_back(i+i);
+        vector<int> temp;
+        for (int j = 1; j <= 12; j++) {
+            temp.push_back(j*i);
         }
+        nums.push_back(temp);
     }
     
     for (int i = 0; i < nums.size(); i++) {
